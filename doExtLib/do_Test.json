@@ -1,0 +1,377 @@
+﻿{
+    "ID": "do_Canvas",
+    "IsContainer": "0",
+    "Type": "UI",
+    "Name": "画布",
+    "Version": "1.0",
+    "Description": "支持2D图形处理，可以画点，线，多边形，文字，图片",
+    "Icon": "",
+    "IOS": {
+        "Support": 1,
+        "MinVersion": "7.0"
+    },
+    "Android": {
+        "Support": 1,
+        "MinVersion": "4.0"
+    },
+    "Windows": {
+        "Support": 1,
+        "MinVersion": "8.1"
+    },
+    "WindowsPhone": {
+        "Support": 1,
+        "MinVersion": "8.1"
+    },
+    "Html": {
+        "Support": 1,
+        "MinVersion": "5"
+    },
+    "Properties": [
+        {
+            "ID": "strokeColor",
+            "Name": "画笔颜色",
+            "Type": "String",
+            "DefaultValue": "000000FF",
+            "EditType": "1",
+            "Group": "",
+            "Description": "设置当前的画笔颜色，颜色值为8位16进制",
+            "Design": {
+                "Type": "Color",
+                "Data": ""
+            }
+        },
+        {
+            "ID": "strokeWidth",
+            "Name": "画笔宽度",
+            "Type": "Number",
+            "DefaultValue": "1",
+            "EditType": "1",
+            "Group": "",
+            "Description": "设置画笔的宽度",
+            "Design": {
+                "Type": "Text",
+                "Data": []
+            }
+        },
+        {
+            "ID": "strokeCap",
+            "Name": "笔触样式",
+            "Type": "Number",
+            "DefaultValue": "0",
+            "EditType": "1",
+            "Group": "",
+            "Description": "支持0：正方形,1：圆，默认值为0",
+            "Design": {
+                "Type": "List",
+                "Data": [
+                    {
+                        "ID": "0",
+                        "Value": "正方形"
+                    },
+                    {
+                        "ID": "1",
+                        "Value": "圆"
+                    }
+                ]
+            }
+        },
+        {
+            "ID": "isFull",
+            "Name": "是否填充",
+            "Type": "Boolean",
+            "DefaultValue": "true",
+            "EditType": "1",
+            "Group": "",
+            "Description": "true：填充,false：不填充",
+            "Design": {
+                "Type": "Boolean",
+                "Data": ""
+            }
+        }
+    ],
+    "Events": [],
+    "syncMethodes": [
+        {
+            "ID": "definePoint",
+            "Name": "画点",
+            "Description": "支持画多点",
+            "ReturnType": "",
+            "ReturnDesc": "",
+            "Paras": [
+                {
+                    "ID": "points",
+                    "Name": "点的坐标集合",
+                    "Type": "Node",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "支持点的集合，如：[{x:x坐标,y:y坐标},{x:x1坐标,y:y1坐标}...]"
+                }
+            ]
+        },
+        {
+            "ID": "defineLine",
+            "Name": "画线",
+            "Description": "传入两点坐标，画一条直线",
+            "ReturnType": "",
+            "ReturnDesc": "",
+            "Paras": [
+                {
+                    "ID": "start",
+                    "Name": "起始点坐标",
+                    "Type": "Node",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "起始点坐标，如：{x:x坐标,x:y坐标}"
+                },
+                {
+                    "ID": "end",
+                    "Name": "终点坐标",
+                    "Type": "Node",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "终点坐标，如：{x:x坐标,x:y坐标}"
+                }
+            ]
+        },
+        {
+            "ID": "defineCircle",
+            "Name": "画圆",
+            "Description": "",
+            "ReturnType": "",
+            "ReturnDesc": "",
+            "Paras": [
+                {
+                    "ID": "point",
+                    "Name": "圆心坐标",
+                    "Type": "Node",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "圆心坐标，如：{x:x坐标,x:y坐标}"
+                },
+                {
+                    "ID": "radius",
+                    "Name": "半径",
+                    "Type": "Number",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "圆角半径"
+                }
+            ]
+        },
+        {
+            "ID": "defineOval",
+            "Name": "画椭圆",
+            "Description": "",
+            "ReturnType": "",
+            "ReturnDesc": "通过左上坐标与右下坐标定义一个矩形，然后沿着矩形画内切椭圆",
+            "Paras": [
+                {
+                    "ID": "start",
+                    "Name": "左上坐标",
+                    "Type": "Node",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "左上坐标，如：{x:x坐标,x:y坐标}"
+                },
+                {
+                    "ID": "end",
+                    "Name": "右下坐标",
+                    "Type": "Node",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "右下坐标，如：{x:x坐标,x:y坐标}"
+                }
+            ]
+        },
+        {
+            "ID": "defineArc",
+            "Name": "画弧",
+            "Description": "",
+            "ReturnType": "",
+            "ReturnDesc": "",
+            "Paras": [
+                {
+                    "ID": "start",
+                    "Name": "左上坐标",
+                    "Type": "Node",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "左上坐标，如：{x:x坐标,x:y坐标}"
+                },
+                {
+                    "ID": "end",
+                    "Name": "右下坐标",
+                    "Type": "Node",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "右下坐标，如：{x:x坐标,x:y坐标}"
+                },
+                {
+                    "ID": "startAngle",
+                    "Name": "起始角度",
+                    "Type": "Number",
+                    "DefaultValue": "0",
+                    "Required": 0,
+                    "Description": "如果为0默认与x轴重合"
+                },
+                {
+                    "ID": "sweepAngle",
+                    "Name": "扫描角度",
+                    "Type": "Number",
+                    "DefaultValue": "90",
+                    "Required": 0,
+                    "Description": "默认为90，以起始角度开始，顺时针扫描90度"
+                },
+                {
+                    "ID": "useCenter",
+                    "Name": "是否包含中心点",
+                    "Type": "Boolean",
+                    "DefaultValue": "true",
+                    "Required": 0,
+                    "Description": "如果为true，这个弧的区域就会包含中心点"
+                }
+            ]
+        },
+        {
+            "ID": "defineRect",
+            "Name": "画矩形",
+            "Description": "",
+            "ReturnType": "",
+            "ReturnDesc": "通过左上坐标与右下坐标定义一个矩形",
+            "Paras": [
+                {
+                    "ID": "start",
+                    "Name": "左上坐标",
+                    "Type": "Node",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "左上坐标，如：{x:x坐标,x:y坐标}"
+                },
+                {
+                    "ID": "end",
+                    "Name": "右下坐标",
+                    "Type": "Node",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "右下坐标，如：{x:x坐标,x:y坐标}"
+                }
+            ]
+        },
+        {
+            "ID": "defineText",
+            "Name": "画文字",
+            "Description": "",
+            "ReturnType": "",
+            "ReturnDesc": "通过左上坐标与右下坐标定义一个矩形",
+            "Paras": [
+                {
+                    "ID": "text",
+                    "Name": "文本内容",
+                    "Type": "String",
+                    "DefaultValue": "",
+                    "Required": "1",
+                    "Description": ""
+                },
+                {
+                    "ID": "coord",
+                    "Name": "坐标",
+                    "Type": "Node",
+                    "DefaultValue": "{x:0,y:0}",
+                    "Required": 0,
+                    "Description": "从此坐标开始画，如：{x:x坐标,x:y坐标}"
+                },
+                {
+                    "ID": "fontStyle",
+                    "Name": "字体风格",
+                    "Type": "String",
+                    "DefaultValue": "normal",
+                    "Required": "0",
+                    "Description": "包含4种类型：normal：常规bold：粗体italic：斜体bold_italic：粗斜体（iOS平台不支持）"
+                },
+                {
+                    "ID": "textFlag",
+                    "Name": "字体标示",
+                    "Type": "String",
+                    "DefaultValue": "normal",
+                    "Required": "0",
+                    "Description": "包含3种类型：normal：常规underline ：下划线strikethrough ：删除线"
+                },
+                {
+                    "ID": "fontSize",
+                    "Name": "字体大小",
+                    "Type": "Number",
+                    "DefaultValue": "17",
+                    "Required": "0",
+                    "Description": ""
+                },
+                {
+                    "ID": "textAlign",
+                    "Name": "文本对齐方式",
+                    "Type": "String",
+                    "DefaultValue": "left",
+                    "Required": "0",
+                    "Description": "对齐方式为以下3种：left 左对齐（默认）；center 居中；right 右对齐。"
+                }
+            ]
+        },
+        {
+            "ID": "defineImage",
+            "Name": "画图片",
+            "Description": "",
+            "ReturnType": "",
+            "ReturnDesc": "设置一张图片作为背景",
+            "Paras": [
+                {
+                    "ID": "source",
+                    "Name": "图片路径",
+                    "Type": "String",
+                    "DefaultValue": "",
+                    "Required": 1,
+                    "Description": "支持do_Bitmap对象或data://开头的路径的图片地址"
+                },
+                {
+                    "ID": "coord",
+                    "Name": "坐标",
+                    "Type": "Node",
+                    "DefaultValue": "{x:0,y:0}",
+                    "Required": 0,
+                    "Description": "从此坐标开始画，如：{x:x坐标,x:y坐标}"
+                }
+            ]
+        },
+        {
+            "ID": "paint",
+            "Name": "画",
+            "Description": "在Canvas上画出来",
+            "ReturnType": "",
+            "ReturnDesc": "",
+            "Paras": []
+        },
+        {   "ID": "clear",
+            "Name": "清空画布",
+            "Description": "清空整个画布内容",
+            "ReturnType": "",
+            "ReturnDesc": "",
+            "Paras": []
+        }
+    ],
+    "asyncMethodes": [
+                      {
+                      "ID": "saveAsBitmap",
+                      "Name": "保存为Bitmap",
+                      "Description": "将整个view保存为一个Btimap",
+                      "ReturnType": "",
+                      "ReturnDesc": "",
+                      "Paras": [
+                                {
+                                "ID": "bitmap",
+                                "Name": "bitmap对象",
+                                "Type": "String",
+                                "DefaultValue": "",
+                                "Required": 1,
+                                "Description": ""
+                                }
+                                ]
+                      }
+                      ]
+}
